@@ -4,6 +4,7 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Testing git with this change
+It worked!
 
 Things you may want to cover:
 
