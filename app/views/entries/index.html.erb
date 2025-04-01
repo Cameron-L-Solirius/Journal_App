@@ -1,22 +1,2 @@
 <h1>All Entries</h1>
 
-<div>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">NAME</th>
-        <th>Comment</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @entries.each do |entry| %>
-        <tr>
-          <td><%= entry.name %></td>
-          <td><%= entry.comment %></td>
-          <td><%= button_to "Delete", entry, method: :delete, data: { confirm: "Are you sure you want to delete this Project ?"} %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</div>
