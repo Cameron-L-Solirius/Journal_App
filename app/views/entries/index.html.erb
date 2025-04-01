@@ -35,7 +35,7 @@
   </div>
   <div class="d-flex align-items-center justify-content-center">
   <span class="me-3"><%= button_to "Compare Investments" %></span>
-<%= button_to 'Add Investment', add_investment_path %>
+  <span class="me-3"><%= button_to 'Add Investment', add_investment_path, method: :get %></span>
   </div>
 
     <% else %>
