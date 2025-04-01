@@ -1,12 +1,41 @@
 <h1>Investment Calculator</h1>
-<p>Welcome to this investment calculator, you can add, edit, delete, and compare different investment journeys to see what your money can do for you!</p>
+<h4>Welcome to this investment calculator, you can add, edit, delete, and compare different investment journeys to see what your money can do for you!</h4><br>
 
 
   <% if user_signed_in? %> 
-      <div> Signed in as <%= current_user.email %> </div> 
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
-        <h1>Signed In</a>
-        <% else %>
-          <%= button_to "Sign in", new_user_session_path %> 
-          <p>Not signed in</p>
-        <% end %>
+  <div class="container">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Rate</th>
+          <th scope="col">Monthly Contribution</th>
+          <th scope="col">Initial Deposit</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Dummy Investment</th>
+          <td>5%</td>
+          <td>£100</td>
+          <td>£1000</td>
+          <td><%= button_to "Edit" %></td>
+          <td><%= button_to "Delete" %></td>
+
+        </tr>
+      </tbody>
+  </table>
+  </div>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+  <%= button_to "Compare Investments" %>
+  <%= button_to "Add Investment" %>
+  </div>
+
+    <% else %>
+      <br>
+      <p>Please sign in to view and edit investment paths.</p>
+      <%= button_to "Sign in", new_user_session_path %> 
+      <% end %>

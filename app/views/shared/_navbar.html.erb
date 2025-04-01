@@ -11,21 +11,13 @@
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
       </ul>
 
       <% if user_signed_in? %> 
       <div> Signed in as <%= current_user.email %> </div> 
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+        <%= button_to "Log out", destroy_user_session_path, method: :delete %> 
         <a class="nav-link" href="#">Signed In Link</a>
         <% else %>
           <%= button_to "Sign in", new_user_session_path %> 
