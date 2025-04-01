@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Investment Calculator</a>
+    <a class="navbar-brand" href="/">Investment Calculator</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,9 +16,8 @@
       </ul>
 
       <% if user_signed_in? %> 
-      <div> Signed in as <%= current_user.email %> </div> 
+      <div class="me-3"> Signed in as <%= current_user.email %> </div> 
         <%= button_to "Log out", destroy_user_session_path, method: :delete %> 
-        <a class="nav-link" href="#">Signed In Link</a>
         <% else %>
           <%= button_to "Sign in", new_user_session_path %> 
         <% end %>
