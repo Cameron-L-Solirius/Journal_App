@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root 'entries#index'
-  # define other roots here
-  
+  root "entries#index"
+
+  # add investment route
+  get "investments", to: "investments#index"
+  get "add_investment", to: "investments#add_investment"
+    resources :investments
 end
