@@ -25,7 +25,7 @@
                         <td><%= investment.initial_deposit %></td>
                         <td><%= investment.duration %></td>
                         <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Edit" %></span></td>
-                        <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Delete" %></span></td>
+                        <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Delete", investment_path(investment), method: :delete %></span></td>
                         <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Graph" %></span></td>
                     </tr>
                 <% end %>
@@ -35,6 +35,6 @@
 
     <div class="d-flex align-items-center justify-content-center">
         <span class="me-3"><%= button_to "Compare Investments" %></span>
-        <span class="me-3"><%= button_to 'Add Investment', investments_path, method: :get %></span>
+    <%= button_to 'Add Investment', add_investment_path, method: :get %>  
     </div>
 </div>

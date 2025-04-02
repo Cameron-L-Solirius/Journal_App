@@ -1,5 +1,4 @@
 class InvestmentsController < ApplicationController
-  # after_save :go_to_index
   def index
     @investments = Investment.all
   end
@@ -11,11 +10,24 @@ class InvestmentsController < ApplicationController
   # Create method for a new method entry
   def create
     @investment = Investment.new(investment_params)
+    @investment.user_id = current_user.id
     if @investment.save
-      redirect_to root_url
+      redirect_to root_url, notice: "Investment was successfully created."
     else
-        render :new
+      render :add_investment, status: :unprocessable_entity
     end
+  end
+
+  # Delete method for investment entry
+  def destroy
+    @investment = Investment.find(params[:id])
+    @investment.destroy
+    redirect_to investments_path, notice: "Investment was successfully deleted."
+  end
+
+  # Add investment page (WIP)
+  def add_investment
+    @investment = Investment.new()
   end
 
   private
@@ -23,8 +35,4 @@ class InvestmentsController < ApplicationController
   def investment_params
       params.require(:investment).permit(:name, :initial_deposit, :monthly_contribution, :rate, :duration)
   end
-
-  # def go_to_index
-  #   redirect_to index()
-  # end
 end

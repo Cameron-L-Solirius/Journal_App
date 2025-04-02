@@ -1,11 +1,13 @@
-<span class="ps-3">
-  <h1 class="ps-3">Investment Calculator</h1>
-  <h4 class="ps-3">Welcome to this investment calculator, you can add, edit, delete, and compare different investment journeys to see what your money can do for you!</h4><br>
-</span>
+<div class="ps-3">
+  <h4>Welcome to this investment calculator!</h4><br>
+  <h5>you can add, edit, delete, and compare different investment journeys to see what your money can do for you!</h5>
+</div>
+<br>
 
 <% if user_signed_in? %> 
   <div class="d-flex align-items-center justify-content-center">
-    <span class="me-3"><%= button_to 'View Investment', investments_path, method: :get %></span>
+    <span class="me-3"><%= button_to 'View Saved Investments', investments_path, method: :get %></span>
+    <%= button_to 'Add Investment', add_investment_path, method: :get %>  
   </div>
 
 <% else %>
