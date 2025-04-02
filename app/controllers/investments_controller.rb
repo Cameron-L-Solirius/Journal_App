@@ -7,16 +7,31 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new()
   end
 
-  def add_investment
-    @investment = Investment.new()
+  # Create method for a new method entry
+  def create
+    @investment = Investment.new(investment_params)
+    @investment.user_id = current_user.id
     if @investment.save
-      redirect_to route_for("/investments")
+      redirect_to root_url, notice: "Investment was successfully created."
     else
-
+      render :add_investment, status: :unprocessable_entity
     end
   end
-  private
 
+  # Delete method for investment entry
+  def destroy
+    @investment = Investment.find(params[:id])
+    @investment.destroy
+    redirect_to investments_path, notice: "Investment was successfully deleted."
+  end
+
+  # Add investment page (WIP)
+  def add_investment
+    @investment = Investment.new()
+  end
+
+  private
+  # Required parameters for the add investment functionality (will need validators elsewhere)
   def investment_params
       params.require(:investment).permit(:name, :initial_deposit, :monthly_contribution, :rate, :duration)
   end

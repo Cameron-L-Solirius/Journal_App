@@ -8,14 +8,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
       <% if user_signed_in? %> 
-        <div class="me-3"> Signed in as <%= current_user.email %> </div> 
+        <div class="me-3"> Signed in as: <%= current_user.email %> </div> 
         <%= button_to "Log out", destroy_user_session_path, method: :delete %> 
       <% else %>
         <%= button_to "Sign in", new_user_session_path %> 
