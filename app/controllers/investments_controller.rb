@@ -1,6 +1,6 @@
 class InvestmentsController < ApplicationController
   def index
-    @investments = Investment.all
+    @investments = current_user.investments.all
   end
 
   def new
@@ -42,6 +42,11 @@ class InvestmentsController < ApplicationController
   # Add investment page
   def add_investment
     @investment = Investment.new()
+  end
+
+  # Compare investments page
+  def compare
+    render :compare_investments
   end
 
   private
