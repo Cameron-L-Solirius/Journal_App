@@ -12,7 +12,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new(investment_params)
     @investment.user_id = current_user.id
     if @investment.save
-      redirect_to root_url, notice: "Investment was successfully created."
+      redirect_to investments_path, notice: "Investment was successfully created."
     else
       render :add_investment, status: :unprocessable_entity
     end
