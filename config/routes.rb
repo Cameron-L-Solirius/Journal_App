@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   get "investments/:id/edit", to: "investments#edit", as: "edit_investment"
 
   # Update given investment
-  # patch "investments/:id", to: "investments#update", as: "update_investment"
+  patch "investments/:id", to: "investments#update", as: "update_investment"
 end
