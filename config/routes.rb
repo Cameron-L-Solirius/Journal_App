@@ -25,4 +25,7 @@ Rails.application.routes.draw do
 
   # Update given investment
   patch "investments/:id", to: "investments#update", as: "update_investment"
+
+  # Route for comparing investments
+  get "investments/compare", to: "investments#compare", as: "compare_investments"
 end

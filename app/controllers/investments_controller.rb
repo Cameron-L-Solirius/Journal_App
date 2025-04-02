@@ -44,6 +44,11 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new()
   end
 
+  # Compare investments page
+  def compare
+    render :compare_investments
+  end
+
   private
   # Required parameters for the add investment functionality (will need validators elsewhere)
   def investment_params
