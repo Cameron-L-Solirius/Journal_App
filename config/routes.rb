@@ -15,7 +15,5 @@ Rails.application.routes.draw do
   root "entries#index"
 
   # add investment route
-  get "investments", to: "investments#index"
-  get "add_investment", to: "investments#add_investment"
-    resources :investments
+  resources :investments, only: [ :create, :new, :index ]
 end
