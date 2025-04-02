@@ -1,0 +1,36 @@
+<div class="d-flex align-items-center justify-content-center">
+  <span class="border border-dark rounded-3 p-4" style="width: 400px;">
+    <h1>Edit Investment</h1>
+
+    <%= form_with(model: @investment, url: investment_path(@investment), method: :patch) do |form| %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div>
+        <%= form.label :initial_deposit %>
+        <%= form.number_field :initial_deposit %>
+      </div>
+
+      <div>
+        <%= form.label :monthly_contribution %>
+        <%= form.number_field :monthly_contribution %>
+      </div>
+
+      <div>
+        <%= form.label :rate %>
+        <%= form.number_field :rate %>
+      </div>
+
+      <div>
+        <%= form.label :duration %>
+        <%= form.number_field :duration %>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <%= form.submit "Update Investment" %>
+      </div>
+    <% end %>
+</span>
+</div>

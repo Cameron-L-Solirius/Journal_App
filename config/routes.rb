@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   # add investment route
   resources :investments, only: [ :create, :new, :index, :destroy ]
 
-  # Add investments page route (WIP)
+  # Add investments page route
   get "investments/add_investment", to: "investments#add_investment", as: "add_investment"
+
+  # Edit investments page route
+  get "investments/:id/edit", to: "investments#edit", as: "edit_investment"
+
+  # Update given investment
+  # patch "investments/:id", to: "investments#update", as: "update_investment"
 end

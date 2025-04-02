@@ -14,7 +14,7 @@ class InvestmentsController < ApplicationController
     if @investment.save
       redirect_to investments_path, notice: "Investment was successfully created."
     else
-      render :add_investment, status: :unprocessable_entity
+      render :add_investment
     end
   end
 
@@ -25,7 +25,21 @@ class InvestmentsController < ApplicationController
     redirect_to investments_path, notice: "Investment was successfully deleted."
   end
 
-  # Add investment page (WIP)
+  def edit
+    @investment = Investment.find(params[:id])
+  end
+
+  def update
+    @investment = Investment.find(params[:id])
+    @investment.user_id = current_user.id
+    if @investment.update(investment_params)
+      redirect_to investments_path, notice: "Investment was successfully updated."
+    else
+      render :add_investment
+    end
+  end
+
+  # Add investment page
   def add_investment
     @investment = Investment.new()
   end

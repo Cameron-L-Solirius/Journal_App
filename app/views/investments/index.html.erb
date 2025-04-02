@@ -24,9 +24,15 @@
                         <td><%= investment.monthly_contribution %></td>
                         <td><%= investment.initial_deposit %></td>
                         <td><%= investment.duration %></td>
-                        <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Edit" %></span></td>
-                        <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Delete", investment_path(investment), method: :delete %></span></td>
-                        <td><span class="d-flex align-items-center justify-content-center"><%= button_to "Graph" %></span></td>
+                        
+                        <td><span class="d-flex align-items-center justify-content-center">
+                            <%= button_to 'Edit', edit_investment_path(investment), method: :get %></span></td>
+
+                        <td><span class="d-flex align-items-center justify-content-center">
+                            <%= button_to "Delete", investment_path(investment), method: :delete %></span></td>
+
+                        <td><span class="d-flex align-items-center justify-content-center">
+                            <%= button_to "Graph" %></span></td>
                     </tr>
                 <% end %>
             </tbody>
