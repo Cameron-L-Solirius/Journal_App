@@ -46,6 +46,7 @@ class InvestmentsController < ApplicationController
 
   # Compare investments page
   def compare
+    # @investments = current_user.inevstments
     render :compare_investments
   end
 
