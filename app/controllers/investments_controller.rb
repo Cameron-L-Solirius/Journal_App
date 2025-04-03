@@ -25,10 +25,12 @@ class InvestmentsController < ApplicationController
     redirect_to investments_path, notice: "Investment was successfully deleted."
   end
 
+  # Edit method for changing investment details
   def edit
     @investment = Investment.find(params[:id])
   end
 
+  # Update method for updating investment details (find out which is required, this or edit, stable for now)
   def update
     @investment = Investment.find(params[:id])
     @investment.user_id = current_user.id
@@ -46,6 +48,7 @@ class InvestmentsController < ApplicationController
 
   # Compare investments page
   def compare
+    # @investments = current_user.inevstments
     render :compare_investments
   end
 

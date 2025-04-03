@@ -149,6 +149,8 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
+    money (6.19.0)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.8.0)
     net-imap (0.5.6)
       date
@@ -324,6 +326,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   importmap-rails
   jbuilder
+  money
   pg (~> 1.4.5)
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.1)
