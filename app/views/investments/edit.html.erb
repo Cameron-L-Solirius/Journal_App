@@ -10,17 +10,17 @@
 
       <div>
         <%= form.label :initial_deposit %>
-        <%= form.number_field :initial_deposit %>
+        <%= form.number_field :initial_deposit, :step => "0.01" %>
       </div>
 
       <div>
         <%= form.label :monthly_contribution %>
-        <%= form.number_field :monthly_contribution %>
+        <%= form.number_field :monthly_contribution, :step => "0.01" %>
       </div>
 
       <div>
         <%= form.label :rate %>
-        <%= form.number_field :rate %>
+        <%= form.number_field :rate, :step => "0.01" %>
       </div>
 
       <div>

@@ -14,7 +14,7 @@ class InvestmentsController < ApplicationController
     if @investment.save
       redirect_to investments_path, notice: "Investment was successfully created."
     else
-      render :add_investment    
+      render :add_investment
     end
   end
 
