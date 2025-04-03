@@ -62,7 +62,7 @@ class InvestmentsController < ApplicationController
   # it adds monthly contribution to current amount + interest generated
   def calculate_growth(investment)
     Money.default_currency = "GBP"
-    monthly_values = []
+    monthly_values = [{ name: "Month 0", data: investment.initial_deposit }]
     current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
     monthly_cont = Money.new(investment.monthly_contribution * 100)
     total_months = 0
