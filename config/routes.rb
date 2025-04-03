@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "entries#index"
 
-  # add investment route
-  resources :investments, only: [ :create, :new, :index, :destroy, :show]
 
+  
   # Add investments page route
   get "investments/add_investment", to: "investments#add_investment", as: "add_investment"
 
@@ -28,4 +27,7 @@ Rails.application.routes.draw do
 
   # Route for comparing investments
   get "investments/compare", to: "investments#compare", as: "compare_investments"
+
+  # add investment route
+  resources :investments, only: [ :create, :new, :index, :destroy, :show ]
 end
