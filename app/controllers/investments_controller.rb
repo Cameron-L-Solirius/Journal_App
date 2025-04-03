@@ -52,6 +52,11 @@ class InvestmentsController < ApplicationController
     render :compare_investments
   end
 
+  # Show method for displaying individual graphs
+  def show
+    render :show
+  end
+
   private
   # Required parameters for the add investment functionality (will need validators elsewhere)
   def investment_params

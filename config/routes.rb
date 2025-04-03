@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # add investment route
   resources :investments, only: [ :create, :new, :index, :destroy ]
 
+  get "investments/show", to: "investments#show", as: "show_investment"
+
   # Add investments page route
   get "investments/add_investment", to: "investments#add_investment", as: "add_investment"
 
