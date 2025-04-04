@@ -1,0 +1,13 @@
+<div class="container d-flex custom-centered">
+<span class="d-flex custom-centered">
+<h1> <%= @investment.name %> Investment Graph</h1>
+</span>
+</div>
+<div class="container d-flex custom-centered graph-container">
+<%= line_chart @chart_data.map { |entry| [entry[:name], entry[:data]] }, 
+  height: "700px", 
+  colors: ["#b00", "red"], 
+  library: {
+    hAxis: { title: "Months", titleTextStyle: { color: "#333", fontSize: 14 } },
+    vAxis: { title: "Amount (£)", titleTextStyle: { color: "#333", fontSize: 14 } }
+  } %> </div>
