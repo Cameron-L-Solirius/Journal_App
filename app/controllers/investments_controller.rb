@@ -48,7 +48,6 @@ class InvestmentsController < ApplicationController
 
   # Compare investments page
   def compare
-    # @investments = current_user.inevstments
     render :compare_investments
   end
 
@@ -65,17 +64,23 @@ class InvestmentsController < ApplicationController
     monthly_values = [ { name: "Month 0", data: investment.initial_deposit } ] # Initialise with the start values for month 0 # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
     current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
     monthly_cont = Money.new(investment.monthly_contribution * 100)
+    monthly_rate = investment.rate.to_f / 100 / 12
     total_months = 0
 
     # Loop over each year then month -> increment month -> add interest to current amount -> add as entry to monthly_values
     (1..investment.duration).each do |year|
       (1..12).each do |month|
         total_months += 1
-        current_amount += (current_amount * (investment.rate / 100)) + monthly_cont
-        monthly_values << { name: "Month #{total_months}", data: current_amount.to_f } # back to pounds
+        current_amount = add_monthly_growth(current_amount, monthly_rate, monthly_cont)
+        monthly_values << { name: "Month #{total_months}", data: current_amount.to_f.round(2) } # back to pounds
       end
     end
     monthly_values
+  end
+
+  # Method for adding monthly growth to current amount
+  def add_monthly_growth(current_amount, monthly_rate, monthly_cont)
+    current_amount += (current_amount * monthly_rate) + monthly_cont
   end
 
   private
