@@ -52,6 +52,32 @@ class InvestmentsController < ApplicationController
     render :compare_investments
   end
 
+  # Show method for displaying individual graphs
+  def show
+    @investment = Investment.find(params[:id])
+    @chart_data = calculate_growth(@investment)
+  end
+
+  # Method takes cur_amount, for each month in each year:
+  # it adds monthly contribution to current amount + interest generated
+  def calculate_growth(investment)
+    Money.default_currency = "GBP"
+    monthly_values = [ { name: "Month 0", data: investment.initial_deposit } ] # Initialise with the start values for month 0 # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
+    current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
+    monthly_cont = Money.new(investment.monthly_contribution * 100)
+    total_months = 0
+
+    # Loop over each year then month -> increment month -> add interest to current amount -> add as entry to monthly_values
+    (1..investment.duration).each do |year|
+      (1..12).each do |month|
+        total_months += 1
+        current_amount += (current_amount * (investment.rate / 100)) + monthly_cont
+        monthly_values << { name: "Month #{total_months}", data: current_amount.to_f } # back to pounds
+      end
+    end
+    monthly_values
+  end
+
   private
   # Required parameters for the add investment functionality (will need validators elsewhere)
   def investment_params
