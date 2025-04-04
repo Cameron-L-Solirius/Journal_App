@@ -26,13 +26,13 @@
                         <td><%= investment.duration %></td>
                         
                         <td><span class="d-flex custom-centered">
-                            <%= button_to 'Edit', edit_investment_path(investment), method: :get %></span></td>
+                            <%= button_to 'Edit', edit_investment_path(investment), method: :get, class: "logout-button logout-button:hover" %></span></td>
 
                         <td><span class="d-flex custom-centered">
-                            <%= button_to "Delete", investment_path(investment), method: :delete %></span></td>
+                            <%= button_to "Delete", investment_path(investment), method: :delete, class: "logout-button logout-button:hover" %></span></td>
 
                         <td><span class="d-flex custom-centered">
-                            <%= button_to "Show Graph", investment_path(investment), method: :get %></span></td>
+                            <%= button_to "Show Graph", investment_path(investment), method: :get, class: "logout-button logout-button:hover" %></span></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="d-flex custom-centered">
-    <%= button_to 'Compare Investments', compare_investments_path, method: :get %>
-    <%= button_to 'Add Investment', add_investment_path, method: :get %>  
+    <%# <%= button_to 'Compare Investments', compare_investments_path, method: :get %>
+    <%# <%= button_to 'Add Investment', add_investment_path, method: :get %>  
     </div>
 </div>

@@ -1,15 +1,22 @@
 <div class="ps-3">
+  <br>
   <h1 class="d-flex custom-centered">
-    Welcome to this investment calculator!</h4><br>
-  <h2 class="d-flex custom-centered">
-    You can add, edit, delete, and compare different investment journeys to see what your money can do for you!</h5>
+    Welcome to this Investment & Savings Calculator</h4><br>
 </div>
 <br>
 
+<body>
+  <div class="custom-centered">
+    <h3>How to use this tool</h3>
+  </div>
+      <p>PLACEHOLDER TEXT</p>
+
+</body>
+
 <% if user_signed_in? %> 
   <div class="d-flex custom-centered">
-    <span class="me-3"><%= button_to 'View Saved Investments', investments_path, method: :get %></span>
-    <%= button_to 'Add Investment', add_investment_path, method: :get %>  
+    <%# <span class="me-3"><%= button_to 'View Saved Investments', investments_path, method: :get %></span>
+    <%# <%= button_to 'Add Investment', add_investment_path, method: :get %>  
   </div>
 
 <% else %>
