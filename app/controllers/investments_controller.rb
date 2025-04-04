@@ -62,7 +62,7 @@ class InvestmentsController < ApplicationController
   # it adds monthly contribution to current amount + interest generated
   def calculate_growth(investment)
     Money.default_currency = "GBP"
-    monthly_values = [{ name: "Month 0", data: investment.initial_deposit }]
+    monthly_values = [ { name: "Month 0", data: investment.initial_deposit } ] # Initialise with the start values for month 0 # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
     current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
     monthly_cont = Money.new(investment.monthly_contribution * 100)
     total_months = 0
@@ -71,7 +71,7 @@ class InvestmentsController < ApplicationController
     (1..investment.duration).each do |year|
       (1..12).each do |month|
         total_months += 1
-        current_amount += current_amount * (investment.rate / 100) + monthly_cont
+        current_amount += (current_amount * (investment.rate / 100)) + monthly_cont
         monthly_values << { name: "Month #{total_months}", data: current_amount.to_f } # back to pounds
       end
     end
