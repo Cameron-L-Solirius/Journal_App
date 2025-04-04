@@ -1,5 +1,5 @@
 <div class="ps-3">
-    <h1 class="d-flex align-items-center justify-content-center">Your Saved Investments</h1>
+    <h1 class="d-flex custom-centered">Your Saved Investments</h1>
     
     <div class="container">
         <table class="table table-striped table-bordered">
@@ -25,13 +25,13 @@
                         <td><%= investment.initial_deposit %></td>
                         <td><%= investment.duration %></td>
                         
-                        <td><span class="d-flex align-items-center justify-content-center">
+                        <td><span class="d-flex custom-centered">
                             <%= button_to 'Edit', edit_investment_path(investment), method: :get %></span></td>
 
-                        <td><span class="d-flex align-items-center justify-content-center">
+                        <td><span class="d-flex custom-centered">
                             <%= button_to "Delete", investment_path(investment), method: :delete %></span></td>
 
-                        <td><span class="d-flex align-items-center justify-content-center">
+                        <td><span class="d-flex custom-centered">
                             <%= button_to "Show Graph", investment_path(investment), method: :get %></span></td>
                     </tr>
                 <% end %>
@@ -39,7 +39,7 @@
         </table>
     </div>
 
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex custom-centered">
     <%= button_to 'Compare Investments', compare_investments_path, method: :get %>
     <%= button_to 'Add Investment', add_investment_path, method: :get %>  
     </div>
