@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "entries#index"
 
-
-  
   # Add investments page route
   get "investments/add_investment", to: "investments#add_investment", as: "add_investment"
 

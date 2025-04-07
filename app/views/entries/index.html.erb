@@ -1,16 +1,23 @@
 <div class="ps-3">
   <br>
   <h1 class="d-flex custom-centered">
-    Welcome to this Investment & Savings Calculator</h4><br>
+    Welcome the Investment & Savings Calculator</h4><br>
 </div>
 <br>
 
 <body>
   <div class="custom-centered">
-    <h3>How to use this tool</h3>
+    <h3>How to use this tool:</h3>
   </div>
-      <p>PLACEHOLDER TEXT</p>
-
+  <div class="custom-centered">
+      <ul>
+        <li>From the top of the page, select "Add Investment", then create and save a savings journey.</li>
+        <li>View this entry by selecting "View Saved Investments".</li>
+        <li>You can edit the entry, or delete it from this page.</li>
+        <li>Select "View Graph" to visualise this entry's growth over time.</li>
+        <li>Select "Compare Entries" to see multiple entries at the same time.</li>
+      </ul>
+  </div>
 </body>
 
 <% if user_signed_in? %> 
@@ -22,10 +29,10 @@
 <% else %>
   <br>
   <div class="d-flex custom-centered">
-    <h3>Please sign in to view and edit investment paths.</h3>
+    <h4>Please sign in to begin:</h4>
   </div>
 
   <div class="d-flex custom-centered">
-    <%= button_to "Sign in", new_user_session_path %> 
+    <%= button_to "Sign in", new_user_session_path, class: "logout-button" %> 
   </div>
 <% end %>

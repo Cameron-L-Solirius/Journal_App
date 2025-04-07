@@ -1,5 +1,5 @@
 <div class="d-flex custom-centered" style="height: 100vh;">
-  <span class="custom-border" style="width: 400px;">
+  <span class="custom-border" style="width: 400px; background-color: #000000;">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -22,9 +22,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-<br>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "logout-button" %>
   </div>
 <% end %>
 <br><p>Already Have an account?<%= render "devise/shared/links" %></p>
