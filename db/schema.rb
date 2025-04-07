@@ -40,3 +40,4 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_03_100938) do
 
   add_foreign_key "investments", "users"
 end
+
