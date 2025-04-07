@@ -1,6 +1,6 @@
 <div class="container d-flex custom-centered">
 <span class="d-flex custom-centered">
-<h1> <%= @investment.name %> Investment Graph</h1>
+<h1> Investment Graph for: <%= @investment.name %></h1>
 </span>
 </div>
 <div class="container d-flex custom-centered graph-container">
@@ -8,3 +8,11 @@
   height: "700px", 
   colors: ["#b00", "red"], 
   xtitle: "Month Number", ytitle: "Value (£)" %> </div>
+
+<div class="custom-centered">
+  <p>Your Total Contributions: £<%= @total_contribution %></p>
+</div>
+
+<div class="custom-centered">
+  <p>Total Growth: £<%= @total_growth %></p>
+</div>

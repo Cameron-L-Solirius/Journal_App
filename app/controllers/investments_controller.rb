@@ -55,6 +55,31 @@ class InvestmentsController < ApplicationController
   def show
     @investment = Investment.find(params[:id])
     @chart_data = calculate_growth(@investment)
+    @total_contribution = total_contribution(@investment)
+    @total_growth = total_growth(@investment)
+  end
+
+  def total_contribution(investment)
+    total_contribution = investment.monthly_contribution * investment.duration * 12
+  end
+
+  def total_growth(investment)
+    Money.default_currency = "GBP"
+    current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
+    monthly_cont = Money.new(investment.monthly_contribution * 100)
+    monthly_rate = investment.rate.to_f / 100 / 12
+    total_months = 0
+    total_growth = 0
+
+    (1..investment.duration).each do |year|
+      (1..12).each do |month|
+        total_months += 1
+        months_growth = current_amount * monthly_rate
+        current_amount += months_growth + monthly_cont
+        total_growth += months_growth
+      end
+    end
+    total_growth
   end
 
   # Method takes cur_amount, for each month in each year:
