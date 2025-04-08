@@ -50,11 +50,9 @@ class InvestmentsController < ApplicationController
   def compare
     @investments = current_user.investments
     if params[:investment1_id].present? && params[:investment2_id].present?
-      # Fetch the selected investments
       @investment1 = current_user.investments.find(params[:investment1_id])
       @investment2 = current_user.investments.find(params[:investment2_id])
 
-      # make chart data for the selected investments
       @chart_data = [
         { name: @investment1.name, data: calculate_multiple_growth(@investment1) },
         { name: @investment2.name, data: calculate_multiple_growth(@investment2) }
@@ -63,6 +61,7 @@ class InvestmentsController < ApplicationController
     render :compare_investments
   end
 
+  # Method for multiple investment calculation
   def calculate_multiple_growth(investment)
     monthly_values = {}
     current_amount = investment.initial_deposit
@@ -83,10 +82,12 @@ class InvestmentsController < ApplicationController
     @total_growth = total_growth(@investment)
   end
 
+  # Helps display total contributions in view graph pages
   def total_contribution(investment)
     total_contribution = investment.monthly_contribution * investment.duration * 12
   end
 
+  # Calcilates total growth of a single investment, to be shown on view graph pages
   def total_growth(investment)
     Money.default_currency = "GBP"
     current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
@@ -108,9 +109,10 @@ class InvestmentsController < ApplicationController
 
   # Method takes cur_amount, for each month in each year:
   # it adds monthly contribution to current amount + interest generated
+  # Arr of hashes fed to chartkick linechart helper
   def calculate_growth(investment)
     Money.default_currency = "GBP"
-    monthly_values = [ { name: "0", data: investment.initial_deposit } ] # Initialise with the start values for month 0 # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
+    monthly_values = [ { name: "0", data: investment.initial_deposit } ]
     current_amount = Money.new(investment.initial_deposit * 100) # Convert to pennies
     monthly_cont = Money.new(investment.monthly_contribution * 100)
     monthly_rate = investment.rate.to_f / 100 / 12
