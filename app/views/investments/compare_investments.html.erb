@@ -3,13 +3,14 @@
   <div class="row ">
     <h1 class="text-center">Investment Comparison</h1>  
 
-    <div class="col-sm d-flex custom-centered graph-container">
-      <%= line_chart({"First Investment" => 2, "2025-01-02" => 3}) %>
-    </div>
-
-    <div class="col-sm d-flex custom-centered graph-container">
-      <%= line_chart({"First Investment" => 2, "2025-01-02" => 3}) %>
-    </div>
+<div class="col-sm d-flex custom-centered graph-container">
+  <%= line_chart [
+    { name: "Investment 1", data: { "2025-01-01" => 2, "2025-01-02" => 3 } },
+    { name: "Investment 2", data: { "2025-01-01" => 5, "2025-01-02" => 7 } }],
+  height: "700px", 
+  colors: ["#000000", "red"], 
+  xtitle: "Month Number", ytitle: "Value (£)" %>
+</div>
 
     <div class="d-flex custom-centered">
       <%= button_to 'View Saved Investments', investments_path, method: :get, class: "logout-button" %>
