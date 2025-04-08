@@ -48,7 +48,31 @@ class InvestmentsController < ApplicationController
 
   # Compare investments page
   def compare
+    @investments = current_user.investments
+    if params[:investment1_id].present? && params[:investment2_id].present?
+      # Fetch the selected investments
+      @investment1 = current_user.investments.find(params[:investment1_id])
+      @investment2 = current_user.investments.find(params[:investment2_id])
+
+      # make chart data for the selected investments
+      @chart_data = [
+        { name: @investment1.name, data: calculate_multiple_growth(@investment1) },
+        { name: @investment2.name, data: calculate_multiple_growth(@investment2) }
+      ]
+    end
     render :compare_investments
+  end
+
+  def calculate_multiple_growth(investment)
+    monthly_values = {}
+    current_amount = investment.initial_deposit
+    monthly_rate = investment.rate.to_f / 100 / 12
+
+    (1..investment.duration * 12).each do |month|
+      current_amount += (current_amount * monthly_rate) + investment.monthly_contribution
+      monthly_values[month] = current_amount.round(2)
+    end
+    monthly_values
   end
 
   # Show method for displaying individual graphs
