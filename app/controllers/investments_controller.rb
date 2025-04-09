@@ -107,7 +107,7 @@ class InvestmentsController < ApplicationController
     total_growth
   end
 
-  # Method takes cur_amount, for each month in each year:
+  # Method takes current_amount, for each month in each year:
   # it adds monthly contribution to current amount + interest generated
   # Arr of hashes fed to chartkick linechart helper
   def calculate_growth(investment)

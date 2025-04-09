@@ -1,30 +1,31 @@
 <div class="container">
-  <h1 class="text-center">Investment Comparison</h1>
+  <h1 class="text-center">Savings Comparison</h1>
 
-  <!-- Form for selecting investments -->
   <%= form_with url: compare_investments_path, method: :get, local: true do |f| %>
-    <div class="row mb-4">
-      <div class="col-sm">
-        <%= f.label :investment1_id, "Select First Investment" %>
-        <%= f.collection_select :investment1_id, @investments, :id, :name, prompt: "Choose an investment" %>
+<table class="table custom-centered table-bordered border-dark table-striped" style="width: 20%; margin: 0 auto;">
+    <div>
+        <th><%= f.label :investment1_id, "Select Second Investment" %>
+        <%= f.collection_select :investment1_id, @investments, :id, :name, prompt: "Choose an investment" %></th>
       </div>
-      <div class="col-sm">
-        <%= f.label :investment2_id, "Select Second Investment" %>
-        <%= f.collection_select :investment2_id, @investments, :id, :name, prompt: "Choose an investment" %>
+    <tr>
+      <div class="custom-centered">
+        <th><%= f.label :investment2_id, "Select Second Investment" %>
+        <%= f.collection_select :investment2_id, @investments, :id, :name, prompt: "Choose an investment" %></th>
       </div>
+    </tr>
+    <tr>
+    <div>
+      <th><%= f.submit "Compare Investments", class: "logout-button" %></th>
     </div>
-    <div class="text-center">
-      <%= f.submit "Compare Investments", class: "logout-button" %>
-    </div>
+    </tr>
+  </table>
   <% end %>
 
   <!-- Render the chart once investemnts chosen -->
   <% if @chart_data.present? %>
-    <div class="row mt-5">
       <div class="custom-centered graph-container">
         <%= line_chart @chart_data, height: "700px", colors: ["#000000", "red"], xtitle: "Month Number", ytitle: "Value (£)" %>
       </div>
-    </div>
   <% end %>
 
   <div class="custom-centered mt-4">
