@@ -1,0 +1,46 @@
+<div class="ps-3">
+    <br>
+    <h1 class="d-flex custom-centered">Your Saved Entries</h1>
+    
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Rate (%)</th>
+                    <th scope="col">Monthly Contribution (£)</th>
+                    <th scope="col">Initial Deposit (£)</th>
+                    <th scope="col">Duration (Years)</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">View Graph</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @investments.each do |investment| %>
+                    <tr>
+                    <th scope="row"><%= investment.name %></th>
+                        <td><%= investment.rate %></td>
+                        <td><%= investment.monthly_contribution %></td>
+                        <td><%= investment.initial_deposit %></td>
+                        <td><%= investment.duration %></td>
+                        
+                        <td><span class="d-flex custom-centered">
+                            <%= button_to 'Edit', edit_investment_path(investment), method: :get, class: "logout-button logout-button:hover" %></span></td>
+
+                        <td><span class="d-flex custom-centered">
+                            <%= button_to "Delete", investment_path(investment), method: :delete, class: "logout-button logout-button:hover" %></span></td>
+
+                        <td><span class="d-flex custom-centered">
+                            <%= button_to "Show Graph", investment_path(investment), method: :get, class: "logout-button logout-button:hover" %></span></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex custom-centered">
+<%= button_to 'Add Investment', add_investment_path, method: :get, class: "logout-button" %>  
+    </div>
+</div>

@@ -14,3 +14,12 @@
  *= require_self
  */
 @import "bootstrap";
+@import "custom-centered";
+@import "custom-border";
+@import "custom-links";
+@import "nav-custom";
+@import "graph-container";
+body {
+    color: #ffff;
+    background-color: #656464; /* Light gray background */
+  }
