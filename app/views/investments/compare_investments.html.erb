@@ -1,7 +1,9 @@
 <div class="container">
+  <br>
   <h1 class="text-center">Savings Comparison</h1>
 
   <%= form_with url: compare_investments_path, method: :get, local: true do |f| %>
+<div class="custom-centered">
 <table class="table custom-centered table-bordered border-dark table-striped" style="width: 20%; margin: 0 auto;">
   <tr>
     <th class="custom-centered"><%= f.label :investment1_id, "Select First Savings Entry" %></th>
@@ -11,10 +13,11 @@
     <th class="custom-centered"><%= f.label :investment2_id, "Select Second Savings Entry" %></th>
     <th class="custom-centered"><%= f.collection_select :investment2_id, @investments, :id, :name, prompt: "Choose an entry" %></th>
   </tr>
-  <tr>
-    <th colspan="2" class="custom-centered"><%= f.submit "Compare Savings", class: "logout-button" %></th>
-  </tr>
-</table>
+  </table>
+</div>
+<div class="custom-centered" style="margin-top: 20px;">
+  <%= f.submit "Compare Savings", class: "logout-button" %>
+</div>
   <% end %>
 
   <!-- Render the chart once investemnts chosen -->
@@ -24,7 +27,7 @@
       </div>
   <% end %>
 
-  <div class="custom-centered mt-4">
+  <div class="custom-centered mt-4" style="padding-bottom: 20px;">
     <%= button_to 'View Saved Entries', investments_path, method: :get, class: "logout-button" %>
   </div>
 </div>
