@@ -1,6 +1,6 @@
 <div class="d-flex custom-centered">
   <span>
-    <h1>Edit Investment</h1>
+    <h1>Edit Entry</h1>
 
     <%= form_with(model: @investment, url: investment_path(@investment), method: :patch) do |form| %>
 <table class="table table-striped table-bordered">
@@ -8,7 +8,7 @@
       
       <thead class="table-dark">
         <tr>
-          <th scope="col">Investment Details</th>
+          <th scope="col">Entry Details</th>
           <th scope="col">Value</th>
         </tr>
       </thead>
@@ -41,7 +41,7 @@
   </table>
 
       <div class="d-flex custom-centered">
-        <%= form.submit "Update Investment" %>
+        <%= form.submit "Update Entry" %>
       </div>
     <% end %>
 </span>
