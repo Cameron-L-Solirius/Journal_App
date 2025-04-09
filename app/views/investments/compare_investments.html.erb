@@ -1,20 +1,35 @@
 <div class="container">
-    
-  <div class="row ">
-    <h1 class="text-center">Investment Comparison</h1>  
+  <h1 class="text-center">Savings Comparison</h1>
 
-<div class="col-sm d-flex custom-centered graph-container">
-  <%= line_chart [
-    { name: "Investment 1", data: { "2025-01-01" => 2, "2025-01-02" => 3 } },
-    { name: "Investment 2", data: { "2025-01-01" => 5, "2025-01-02" => 7 } }],
-  height: "700px", 
-  colors: ["#000000", "red"], 
-  xtitle: "Month Number", ytitle: "Value (£)" %>
-</div>
-
-    <div class="d-flex custom-centered">
-      <%= button_to 'View Saved Investments', investments_path, method: :get, class: "logout-button" %>
-      <%# <%= button_to 'Add Investment', add_investment_path, method: :get %>  
+  <%= form_with url: compare_investments_path, method: :get, local: true do |f| %>
+<table class="table custom-centered table-bordered border-dark table-striped" style="width: 20%; margin: 0 auto;">
+    <div>
+        <th><%= f.label :investment1_id, "Select Second Investment" %>
+        <%= f.collection_select :investment1_id, @investments, :id, :name, prompt: "Choose an investment" %></th>
+      </div>
+    <tr>
+      <div class="custom-centered">
+        <th><%= f.label :investment2_id, "Select Second Investment" %>
+        <%= f.collection_select :investment2_id, @investments, :id, :name, prompt: "Choose an investment" %></th>
+      </div>
+    </tr>
+    <tr>
+    <div>
+      <th><%= f.submit "Compare Investments", class: "logout-button" %></th>
     </div>
+    </tr>
+  </table>
+  <% end %>
+
+  <!-- Render the chart once investemnts chosen -->
+  <% if @chart_data.present? %>
+      <div class="custom-centered graph-container">
+        <%= line_chart @chart_data, height: "700px", colors: ["#000000", "red"], xtitle: "Month Number", ytitle: "Value (£)" %>
+      </div>
+  <% end %>
+
+  <div class="custom-centered mt-4">
+    <%= button_to 'View Saved Investments', investments_path, method: :get, class: "logout-button" %>
+    <%= button_to 'Add Investment', add_investment_path, method: :get, class: "logout-button" %>
   </div>
 </div>

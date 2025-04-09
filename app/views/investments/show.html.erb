@@ -1,8 +1,9 @@
 <div class="container d-flex custom-centered">
-<span class="d-flex custom-centered">
-<h1> Investment Graph for: <%= @investment.name %></h1>
-</span>
+  <span class="d-flex custom-centered">
+    <h1> Investment Graph for: <%= @investment.name %></h1>
+  </span>
 </div>
+
 <div class="container d-flex custom-centered graph-container">
 <%= line_chart @chart_data.map { |entry| [entry[:name], entry[:data]] }, 
   height: "700px", 
