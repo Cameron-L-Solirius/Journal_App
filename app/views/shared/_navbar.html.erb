@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <%= image_tag "Investment_Logo.jpg", alt: "Investment Logo Icon", width: 30, height: 24,
      class: "d-inline-block align-text-top" %>
-    <a class="navbar-brand custom-link" href="/">Investment Calculator</a>
+    <a class="navbar-brand custom-link" href="/">Savings Calculator</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -13,9 +13,9 @@
       <% if user_signed_in? %> 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <%= link_to 'View Saved Investments', investments_path, method: :get, class: "custom-link" %>
-            <%= link_to 'Add Investment', add_investment_path, method: :get, class: "custom-link" %>  
-            <%= link_to 'Compare Investments', compare_investments_path, method: :get, class: "custom-link" %>
+            <%= link_to 'View Saved Entries', investments_path, method: :get, class: "custom-link" %>
+            <%= link_to 'Add Savings Entry', add_investment_path, method: :get, class: "custom-link" %>  
+            <%= link_to 'Compare Savings Entries', compare_investments_path, method: :get, class: "custom-link" %>
         </ul>
         <div class="me-3"> Signed in as: <%= current_user.email %> </div> 
         <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "logout-button logout-button:hover" %> 
